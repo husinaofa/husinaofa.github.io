@@ -49,6 +49,12 @@
 	<!--[if lt IE 9]>
 	<script src="js/respond.min.js"></script>
 	<![endif]-->
+	<script>
+		function playMusic() {
+		  var play=document.getElementById("music");
+		  play.play();
+		}
+	</script>
 
 	</head>
 	<body>
@@ -101,7 +107,7 @@
 						<div class="display-tc animate-box" data-animate-effect="fadeIn">
 							<h1>We Are Getting Married </h1>
 							<h1>Husin &amp; Aofa</h1>
-							<h2>Sampang, 1 July 2023</h2>
+							<h2>Sampang, Cilacap, 1 July 2023</h2>
 							<div class="simply-countdown simply-countdown-one"></div>
 							<!-- <p><a href="#" class="btn btn-default btn-sm">Save the date</a></p> -->
 						</div>
@@ -151,7 +157,7 @@
 				<div class="col-md-8 col-md-offset-2 text-center fh5co-heading animate-box">
 					<span>Our Special Events</span>
 					<h2>Wedding Events</h2>
-					<h3>Sampang, 1 July 2023</h3>
+					<h2>Sampang, Cilacap, 1 July 2023</h2>
 				</div>
 			</div>
 			<div class="row">
@@ -184,8 +190,8 @@
 									</div>
 									<div class="event-col">
 										<i class="icon-calendar"></i>
-										<span>Saturday 1</span>
-										<span>July, 2023</span>
+										<span>Saturday</span>
+										<span>1 July, 2023</span>
 									</div>
 									<!-- <p>Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.</p> -->
 									<p>
@@ -597,10 +603,21 @@
 		</div>
 	</footer>
 	</div>
+	<div class="alert">
+		<p>This webpage would like to play sounds ?</p>
+		<p class="buttons">
+		  <button value="0">Block</button>
+		  <button value="1">Allow</button>
+		</p>
+	</div>
 
 	<div class="gototop js-top">
 		<a href="#" class="js-gotop"><i class="icon-arrow-up"></i></a>
 	</div>
+
+	<audio autoplay="autoplay" loop hidden id="music">
+		<source src="./src/music.mp3" type="audio/mp3">
+	</audio>
 	
 	<!-- jQuery -->
 	<script src="js/jquery.min.js"></script>
@@ -649,6 +666,18 @@
       	seconds: 0,
         enableUtc: false
     });
+</script>
+<script type="text/javascript">
+	const alert_elem = document.querySelector( '.alert' );
+	alert_elem.addEventListener( 'click', ({ target }) => {
+    if( target.matches('button') ) {
+      const allowed = target.value === "1";
+      if( allowed ) {
+		  playMusic()
+      }
+      alert_elem.remove();
+    }
+  } );
 </script>
 
 	</body>
